@@ -30,8 +30,12 @@ namespace BinaryTree
             //добавляем левого потомка для узла 16
             tree.Add(15);
 
-            //показать дерево в виде массива
+            //показать 1 дерево в виде массива
+            Console.WriteLine("показать дерево 1 в виде массива");
             tree.PreOrderTraverse(tree.RootNode, (nodeData) => Console.Write(nodeData + " "));
+
+            Console.WriteLine("отсортировать дерево 1");
+            tree.Sort(tree.RootNode);
 
             Console.WriteLine();
             //показать дерево картинкой (не реализовано)
@@ -98,6 +102,9 @@ namespace BinaryTree
             //добавляем правого потомка для узла 16
             tree.Add(17);
 
+            Console.WriteLine("отсортировать дерево 2");
+            tree.Sort(tree.RootNode);
+
             //удалить 14 - потомка с двумя детьми
             tree.Remove(14); removedNode14 = tree.FindNode(14);
 
@@ -124,7 +131,10 @@ namespace BinaryTree
             tree.Add(11);
             //добавляем левого потомка для узла 10
             tree.Add(8);
-            
+
+            Console.WriteLine("отсортировать дерево 3");
+            tree.Sort(tree.RootNode);
+
             //удалить 7 - потомка с двумя детьми
             tree.Remove(7); removedNode14 = tree.FindNode(7);
         }

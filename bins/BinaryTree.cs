@@ -99,8 +99,10 @@ namespace BinaryTree
                 return;
             }
 
-            if (node == null) 
+            if (node == null)
+            {
                 return;
+            }
             //Node здесь - это вновь созданный node, который не привязан к дереву.
             var startNode = currentNode ?? this.RootNode;
             var compareIndex = node.Data.CompareTo(startNode.Data);
@@ -208,6 +210,18 @@ namespace BinaryTree
                     }                    
                 }
             }
+        }
+
+        public void Sort(BinaryTreeNode<T> node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+            Sort(node.LeftNode);
+            Console.Write(node.Data + " ");
+            Sort(node.RightNode);
+            
         }
 
         // Pre-order обход в глубину
