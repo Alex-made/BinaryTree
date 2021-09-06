@@ -30,6 +30,31 @@ namespace BinaryTree
             //добавляем левого потомка для узла 16
             tree.Add(15);
 
+            //показать дерево в виде массива
+            tree.PreOrderTraverse(tree.RootNode, (nodeData) => Console.Write(nodeData + " "));
+
+            Console.WriteLine();
+            //показать дерево картинкой (не реализовано)
+            tree.PreOrderTraverse(tree.RootNode, (nodeSide, nodeData) =>
+            {
+                //если узел корневой
+                if (nodeSide == null)
+                {
+                    Console.WriteLine(nodeData);
+                }
+                //если узел правый
+                if (nodeSide == Side.Right)
+                {
+                    Console.WriteLine(nodeData);
+                }
+                //если узел левый
+                if (nodeSide == Side.Left)
+                {
+                    Console.WriteLine(nodeData);
+                }
+
+            });
+
             var node1 = tree.FindNode(new BinaryTreeNode<int>(12));
             var node2 = tree.FindNode(new BinaryTreeNode<int>(14));
             var node3 = tree.FindNode(new BinaryTreeNode<int>(2));

@@ -210,6 +210,26 @@ namespace BinaryTree
             }
         }
 
+        // Pre-order обход в глубину
+        public void PreOrderTraverse(BinaryTreeNode<T> currentNode, Action<BinaryTreeNode<T>> action)
+        {
+            if (currentNode == null) return;
+            action.Invoke(currentNode);
+
+            PreOrderTraverse(currentNode.LeftNode, action);
+            PreOrderTraverse(currentNode.RightNode, action);
+        }
+
+        // Pre-order обход в глубину
+        public void PreOrderTraverse(BinaryTreeNode<T> currentNode, Action<Side?, BinaryTreeNode<T>> action)
+        {
+            if (currentNode == null) return;
+            action.Invoke(currentNode.NodeSide, currentNode);
+
+            PreOrderTraverse(currentNode.LeftNode, action);
+            PreOrderTraverse(currentNode.RightNode, action);
+        }
+
         private BinaryTreeNode<T> GetMostLeftNode(Side? side)
         {
             //использовать переделанный вариант метода FindNode, который найдет самое маленькое значение
