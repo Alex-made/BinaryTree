@@ -30,6 +30,10 @@ namespace BinaryTree
             //добавляем левого потомка для узла 16
             tree.Add(15);
 
+            //обойти 1 дерево в ширину
+            Console.WriteLine("обойти 1 дерево в ширину");
+            tree.WideTraverse(tree.RootNode, (nodeData) => Console.Write(nodeData + " "));
+
             //показать 1 дерево в виде массива
             Console.WriteLine("показать дерево 1 в виде массива");
             tree.PreOrderTraverse(tree.RootNode, (nodeData) => Console.Write(nodeData + " "));

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace BinaryTree
 {
@@ -212,6 +213,10 @@ namespace BinaryTree
             }
         }
 
+        /// <summary>
+        /// Возвращает отсортированное дерево.
+        /// </summary>
+        /// <param name="node"></param>
         public void Sort(BinaryTreeNode<T> node)
         {
             if (node == null)
@@ -222,6 +227,32 @@ namespace BinaryTree
             Console.Write(node.Data + " ");
             Sort(node.RightNode);
             
+        }
+
+        // обход в ширину
+        public void WideTraverse(BinaryTreeNode<T> startNode, Action<BinaryTreeNode<T>> action)
+        {
+            if (startNode == null) return;
+            var queue = new Queue();
+            //посетить вершину
+            action.Invoke(startNode);
+            //поместить ее потомков в очередь
+            queue.Enqueue(startNode.RightNode);
+            queue.Enqueue(startNode.LeftNode);
+            //пока очередь не пуста извлечь узел сверху очереди, посетить его, а его детей расположить в конец очереди
+            while(queue.Count != 0)
+            {
+                var node = (BinaryTreeNode<T>) queue.Dequeue();  //MY TODO хранить в очереди не TreeNode а T
+                action.Invoke(node);
+                if (node.RightNode != null)
+                {
+                    queue.Enqueue(node.RightNode);
+                }
+                if (node.LeftNode != null)
+                {
+                    queue.Enqueue(node.LeftNode);
+                }
+            }
         }
 
         // Pre-order обход в глубину
